@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <b><p align="center" class="main">News-Portal</p></b>
+
+    <style>
+        .main{
+            font-size: 30px;
+        }
+
+        .out{
+            margin: 0 20% 0 20%;
+        }
+        body{
+            background: linear-gradient(45deg, #EECFBA, #C5DDE8);
+        }
+    </style>
+</head>
+<body>
+
+<br/>
+<a href="/posting/new">Create new Post</a>
+<hr/>
+
+<br>
+<div th:each="newsPost : ${mainModel}">
+    <b><p align="center" th:href="@{/posting/{id}(id=${newsPost.getId()})}"
+       th:text="${newsPost.getTitle()}"></p></b>
+    <p class="out" align="center" th:href="@{/posting/{id}(id=${newsPost.getId()})}"
+       th:text="${newsPost.getStringText()}"></p>
+    <br/>
+    <br>
+</div>
+
+</body>
+</html>
